@@ -1,211 +1,61 @@
-{
- "cells": [
-  {
-   "cell_type": "code",
-   "execution_count": 15,
-   "id": "77d0ad66-36cc-4626-98b6-843ca830a955",
-   "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "Iteration 1: v = 0.04, θ = 0.23926864925020408, f(v, θ) = 11.463237591012794\n",
-      "Iteration 2: v = 0.07919999999999999, θ = 0.4236878119863909, f(v, θ) = 10.326857130107472\n",
-      "Iteration 3: v = 0.117616, θ = 0.5643306862176762, f(v, θ) = 9.475854529556855\n",
-      "Iteration 4: v = 0.15526368000000002, θ = 0.6700610604446313, f(v, θ) = 8.83166755238354\n",
-      "Iteration 5: v = 0.1921584064, θ = 0.7479736370736585, f(v, θ) = 8.339913966865433\n",
-      "Iteration 6: v = 0.228315238272, θ = 0.8037466120320326, f(v, θ) = 7.962395839099976\n",
-      "Iteration 7: v = 0.22374893350656003, θ = 0.8019239951949257, f(v, θ) = 7.986605974118919\n",
-      "Iteration 8: v = 0.21927395483642884, θ = 0.8012831640404151, f(v, θ) = 8.005340972656022\n",
-      "Iteration 9: v = 0.21488847573970027, θ = 0.801572253826079, f(v, θ) = 8.019707709194277\n",
-      "Iteration 10: v = 0.21059070622490628, θ = 0.8025899159946274, f(v, θ) = 8.030596697937177\n",
-      "Iteration 11: v = 0.20637889210040816, θ = 0.8041752453331619, f(v, θ) = 8.03872303191064\n",
-      "Iteration 12: v = 0.2022513142584, θ = 0.8061997144647814, f(v, θ) = 8.044660029900058\n",
-      "Iteration 13: v = 0.198206287973232, θ = 0.8085607156715063, f(v, θ) = 8.048866717597381\n",
-      "Iteration 14: v = 0.19424216221376736, θ = 0.8111763897552127, f(v, θ) = 8.051710165491436\n",
-      "Iteration 15: v = 0.190357318969492, θ = 0.8139814854677373, f(v, θ) = 8.053483578885125\n",
-      "Iteration 16: v = 0.18655017259010218, θ = 0.8169240441475597, f(v, θ) = 8.054420905554036\n",
-      "Iteration 17: v = 0.18281916913830012, θ = 0.8199627451228454, f(v, θ) = 8.054708604703539\n",
-      "Iteration 18: v = 0.17916278575553413, θ = 0.823064780208463, f(v, θ) = 8.054495111946375\n",
-      "Iteration 19: v = 0.17557953004042345, θ = 0.8262041518628122, f(v, θ) = 8.053898440585996\n",
-      "Iteration 20: v = 0.172067939439615, θ = 0.8293603105800709, f(v, θ) = 8.05301227930958\n",
-      "Iteration 21: v = 0.16862658065082267, θ = 0.8325170639166486, f(v, θ) = 8.051910879311205\n",
-      "Iteration 22: v = 0.16525404903780622, θ = 0.8356617030214827, f(v, θ) = 8.050652968340032\n",
-      "Iteration 23: v = 0.16194896805705009, θ = 0.8387843033263362, f(v, θ) = 8.049284883575174\n",
-      "Iteration 24: v = 0.15870998869590908, θ = 0.841877164689376, f(v, θ) = 8.047843078017385\n",
-      "Iteration 25: v = 0.15553578892199088, θ = 0.8449343632013057, f(v, θ) = 8.046356124858184\n",
-      "Iteration 26: v = 0.15242507314355105, θ = 0.847951392401194, f(v, θ) = 8.044846319816573\n",
-      "Iteration 27: v = 0.14937657168068003, θ = 0.8509248760834744, f(v, θ) = 8.043330961681184\n",
-      "Iteration 28: v = 0.14638904024706642, θ = 0.8538523384283054, f(v, θ) = 8.041823375385842\n",
-      "Iteration 29: v = 0.1434612594421251, θ = 0.8567320200306477, f(v, θ) = 8.040333729154128\n",
-      "Iteration 30: v = 0.1405920342532826, θ = 0.859562730680023, f(v, θ) = 8.038869686976305\n",
-      "Iteration 31: v = 0.13778019356821694, θ = 0.8623437315658774, f(v, θ) = 8.037436929442524\n",
-      "Iteration 32: v = 0.1350245896968526, θ = 0.8650746410431626, f(v, θ) = 8.036039569352374\n",
-      "Iteration 33: v = 0.13232409790291555, θ = 0.8677553592615727, f(v, θ) = 8.034680483231902\n",
-      "Iteration 34: v = 0.12967761594485724, θ = 0.8703860078977903, f(v, θ) = 8.033361575655224\n",
-      "Iteration 35: v = 0.12708406362596011, θ = 0.8729668819795031, f(v, θ) = 8.032083989879844\n",
-      "Iteration 36: v = 0.12454238235344092, θ = 0.8754984113900365, f(v, θ) = 8.030848275594765\n",
-      "Iteration 37: v = 0.1220515347063721, θ = 0.8779811301229445, f(v, θ) = 8.029654522412986\n",
-      "Iteration 38: v = 0.11961050401224467, θ = 0.8804156517406558, f(v, θ) = 8.028502466007073\n",
-      "Iteration 39: v = 0.11721829393199977, θ = 0.8828026497993501, f(v, θ) = 8.027391572400983\n",
-      "Iteration 40: v = 0.11487392805335979, θ = 0.8851428422489338, f(v, θ) = 8.026321104823888\n",
-      "Iteration 41: v = 0.11257644949229259, θ = 0.8874369790145155, f(v, θ) = 8.025290176646438\n",
-      "Iteration 42: v = 0.11032492050244674, θ = 0.8896858321239483, f(v, θ) = 8.024297793212476\n",
-      "Iteration 43: v = 0.1081184220923978, θ = 0.8918901878726595, f(v, θ) = 8.02334288481373\n",
-      "Iteration 44: v = 0.10595605365054984, θ = 0.8940508406184003, f(v, θ) = 8.022424332603066\n",
-      "Iteration 45: v = 0.10383693257753884, θ = 0.89616858787975, f(v, θ) = 8.021540988880842\n",
-      "Iteration 46: v = 0.10176019392598806, θ = 0.8982442264772335, f(v, θ) = 8.020691692900186\n",
-      "Iteration 47: v = 0.0997249900474683, θ = 0.9002785495079741, f(v, θ) = 8.01987528310643\n",
-      "Iteration 48: v = 0.09773049024651893, θ = 0.9022723439864916, f(v, θ) = 8.019090606541678\n",
-      "Iteration 49: v = 0.09577588044158855, θ = 0.9042263890176383, f(v, θ) = 8.018336525998055\n",
-      "Iteration 50: v = 0.09386036283275678, θ = 0.9061414543943954, f(v, θ) = 8.017611925385687\n",
-      "Iteration 51: v = 0.09198315557610165, θ = 0.9080182995346505, f(v, θ) = 8.016915713687226\n",
-      "Iteration 52: v = 0.0901434924645796, θ = 0.9098576726882184, f(v, θ) = 8.016246827795703\n",
-      "Iteration 53: v = 0.08834062261528801, θ = 0.9116603103590858, f(v, θ) = 8.015604234472413\n",
-      "Iteration 54: v = 0.08657381016298225, θ = 0.9134269368988484, f(v, θ) = 8.014986931613528\n",
-      "Iteration 55: v = 0.08484233395972261, θ = 0.9151582642361061, f(v, θ) = 8.014393948975847\n",
-      "Iteration 56: v = 0.08314548728052816, θ = 0.9168549917136257, f(v, θ) = 8.013824348481442\n",
-      "Iteration 57: v = 0.0814825775349176, θ = 0.9185178060107182, f(v, θ) = 8.013277224196498\n",
-      "Iteration 58: v = 0.07985292598421925, θ = 0.9201473811327958, f(v, θ) = 8.012751702060132\n",
-      "Iteration 59: v = 0.07825586746453488, θ = 0.9217443784536875, f(v, θ) = 8.012246939423338\n",
-      "Iteration 60: v = 0.07669075011524418, θ = 0.923309446799186, f(v, θ) = 8.011762124445765\n",
-      "Iteration 61: v = 0.07515693511293929, θ = 0.9248432225626184, f(v, θ) = 8.011296475388113\n",
-      "Iteration 62: v = 0.07365379641068051, θ = 0.9263463298450819, f(v, θ) = 8.010849239829945\n",
-      "Iteration 63: v = 0.07218072048246689, θ = 0.9278193806144803, f(v, θ) = 8.010419693836456\n",
-      "Iteration 64: v = 0.07073710607281755, θ = 0.9292629748786776, f(v, θ) = 8.01000714109259\n",
-      "Iteration 65: v = 0.0693223639513612, θ = 0.930677700869039, f(v, θ) = 8.009610912019006\n",
-      "Iteration 66: v = 0.06793591667233397, θ = 0.9320641352313926, f(v, θ) = 8.009230362881063\n",
-      "Iteration 67: v = 0.0665771983388873, θ = 0.9334228432220538, f(v, θ) = 8.008864874899526\n",
-      "Iteration 68: v = 0.06524565437210955, θ = 0.9347543789070388, f(v, θ) = 8.008513853369656\n",
-      "Iteration 69: v = 0.06394074128466735, θ = 0.93605928536299, f(v, θ) = 8.008176726793696\n",
-      "Iteration 70: v = 0.062661926458974, θ = 0.9373380948786407, f(v, θ) = 8.00785294603053\n",
-      "Iteration 71: v = 0.061408687929794516, θ = 0.9385913291559026, f(v, θ) = 8.007541983465309\n",
-      "Iteration 72: v = 0.06018051417119862, θ = 0.9398194995098548, f(v, θ) = 8.007243332200941\n",
-      "Iteration 73: v = 0.05897690388777464, θ = 0.9410231070670737, f(v, θ) = 8.006956505272816\n",
-      "Iteration 74: v = 0.057797365810019145, θ = 0.9422026429618714, f(v, θ) = 8.00668103488761\n",
-      "Iteration 75: v = 0.05664141849381877, θ = 0.943358588530109, f(v, θ) = 8.006416471686581\n",
-      "Iteration 76: v = 0.055508590123942395, θ = 0.9444914155003368, f(v, θ) = 8.006162384033589\n",
-      "Iteration 77: v = 0.05439841832146355, θ = 0.9456015861820731, f(v, θ) = 8.005918357327637\n",
-      "Iteration 78: v = 0.05331044995503428, θ = 0.9466895536510889, f(v, θ) = 8.005683993339836\n",
-      "Iteration 79: v = 0.05224424095593358, θ = 0.9477557619316025, f(v, θ) = 8.005458909574264\n",
-      "Iteration 80: v = 0.05119935613681491, θ = 0.9488006461753258, f(v, θ) = 8.005242738652324\n",
-      "Iteration 81: v = 0.05017536901407861, θ = 0.949824632837325, f(v, θ) = 8.005035127719992\n",
-      "Iteration 82: v = 0.04917186163379704, θ = 0.9508281398486798, f(v, θ) = 8.004835737877368\n",
-      "Iteration 83: v = 0.04818842440112109, θ = 0.9518115767859446, f(v, θ) = 8.004644243629858\n",
-      "Iteration 84: v = 0.04722465591309868, θ = 0.952775345037422, f(v, θ) = 8.004460332360361\n",
-      "Iteration 85: v = 0.0462801627948367, θ = 0.9537198379662748, f(v, θ) = 8.00428370382174\n",
-      "Iteration 86: v = 0.04535455953893997, θ = 0.9546454410705058, f(v, θ) = 8.004114069648878\n",
-      "Iteration 87: v = 0.044447468348161184, θ = 0.955552532139841, f(v, θ) = 8.003951152889732\n",
-      "Iteration 88: v = 0.04355851898119797, θ = 0.9564414814095608, f(v, θ) = 8.003794687554594\n",
-      "Iteration 89: v = 0.042687348601574006, θ = 0.9573126517113186, f(v, θ) = 8.003644418182981\n",
-      "Iteration 90: v = 0.041833601629542534, θ = 0.9581663986210004, f(v, θ) = 8.003500099427464\n",
-      "Iteration 91: v = 0.040996929596951684, θ = 0.9590030706036659, f(v, θ) = 8.003361495653834\n",
-      "Iteration 92: v = 0.04017699100501265, θ = 0.9598230091556281, f(v, θ) = 8.003228380556962\n",
-      "Iteration 93: v = 0.039373451184912395, θ = 0.9606265489437177, f(v, θ) = 8.003100536791772\n",
-      "Iteration 94: v = 0.038585982161214144, θ = 0.9614140179417839, f(v, θ) = 8.00297775561875\n",
-      "Iteration 95: v = 0.037814262517989854, θ = 0.962185737564484, f(v, θ) = 8.002859836563427\n",
-      "Iteration 96: v = 0.03705797726763007, θ = 0.9629420227984093, f(v, θ) = 8.002746587089284\n",
-      "Iteration 97: v = 0.036316817722277475, θ = 0.9636831823306022, f(v, θ) = 8.002637822283587\n",
-      "Iteration 98: v = 0.035590481367831925, θ = 0.9644095186745105, f(v, θ) = 8.002533364555607\n",
-      "Iteration 99: v = 0.03487867174047529, θ = 0.9651213282934296, f(v, θ) = 8.002433043346775\n",
-      "Iteration 100: v = 0.0341810983056658, θ = 0.9658189017214829, f(v, θ) = 8.002336694852312\n",
-      "Optimal v: 0.0341810983056658, Optimal θ: 0.9658189017214829\n"
-     ]
-    }
-   ],
-   "source": [
-    "import numpy as np\n",
-    "\n",
-    "# Outer objective function f(v, θ)\n",
-    "def outer_objective(v, theta):\n",
-    "    # 예시: f(v, θ) = (v-2)**2 + (theta-3)**2\n",
-    "    return (v - 2)**2 + (theta - 3)**2\n",
-    "\n",
-    "# Inner objective function g(v, θ)\n",
-    "def inner_objective(v, theta):\n",
-    "    # 예시: g(v, θ) = (v + theta - 1)**2\n",
-    "    return (v + theta - 1)**2\n",
-    "\n",
-    "# Gradient of outer objective f(v, θ)\n",
-    "def grad_outer(v, theta):\n",
-    "    df_dv = 2 * (v - 2)\n",
-    "    df_dtheta = 2 * (theta - 3)\n",
-    "    return np.array([df_dv, df_dtheta])\n",
-    "\n",
-    "# Gradient of inner objective g(v, θ)\n",
-    "def grad_inner(v, theta):\n",
-    "    dg_dv = 2 * (v + theta - 1)\n",
-    "    dg_dtheta = 2 * (v + theta - 1)\n",
-    "    return np.array([dg_dv, dg_dtheta])\n",
-    "\n",
-    "# Bilevel Optimization Made Easy (BOME)\n",
-    "def bome(v_init, theta_init, alpha=0.01, xi=0.01, T=10, max_iter=100, eta=0.5):\n",
-    "    v, theta = v_init, theta_init\n",
-    "\n",
-    "    for k in range(max_iter):\n",
-    "        # Inner optimization: approximating θ*(v) via T gradient steps\n",
-    "        for t in range(T):\n",
-    "            theta -= alpha * grad_inner(v, theta)[1]  # Update θ using gradient of inner objective\n",
-    "        \n",
-    "        # Compute q(v, θ) and its gradient\n",
-    "        q = inner_objective(v, theta_init) - inner_objective(v, theta)  # q(v, θ) = g(v, θ) - g*(v)\n",
-    "        grad_q = grad_inner(v, theta)\n",
-    "\n",
-    "        # Compute control barrier φk\n",
-    "        phi_k = eta * np.linalg.norm(grad_q)**2\n",
-    "\n",
-    "        # Compute the lambda_k (Lagrange multiplier)\n",
-    "        grad_f = grad_outer(v, theta)\n",
-    "        lambda_k = max((phi_k - np.dot(grad_f, grad_q)) / (np.linalg.norm(grad_q)**2), 0)\n",
-    "\n",
-    "        # Update v and θ using the BOME update rule\n",
-    "        v -= xi * (grad_f[0] + lambda_k * grad_q[0])\n",
-    "        theta -= xi * (grad_f[1] + lambda_k * grad_q[1])\n",
-    "\n",
-    "        # Print the current state\n",
-    "        print(f\"Iteration {k+1}: v = {v}, θ = {theta}, f(v, θ) = {outer_objective(v, theta)}\")\n",
-    "\n",
-    "    return v, theta\n",
-    "\n",
-    "# Initialize variables\n",
-    "v_init = 0.0\n",
-    "theta_init = 0.0\n",
-    "\n",
-    "# Run the BOME algorithm\n",
-    "v_opt, theta_opt = bome(v_init, theta_init)\n",
-    "\n",
-    "print(f\"Optimal v: {v_opt}, Optimal θ: {theta_opt}\")\n"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "d18c8d3d-a0d3-47f8-82c2-6af6954d90fe",
-   "metadata": {},
-   "outputs": [],
-   "source": []
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 3 (ipykernel)",
-   "language": "python",
-   "name": "python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.12.4"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 5
-}
+import numpy as np
+
+# Outer objective function f(v, θ)
+def outer_objective(v, theta):
+    # 예시: f(v, θ) = (v-2)**2 + (theta-3)**2
+    return (v - 2)**2 + (theta - 3)**2
+
+# Inner objective function g(v, θ)
+def inner_objective(v, theta):
+    # 예시: g(v, θ) = (v + theta - 1)**2
+    return (v + theta - 1)**2
+
+# Gradient of outer objective f(v, θ)
+def grad_outer(v, theta):
+    df_dv = 2 * (v - 2)
+    df_dtheta = 2 * (theta - 3)
+    return np.array([df_dv, df_dtheta])
+
+# Gradient of inner objective g(v, θ)
+def grad_inner(v, theta):
+    dg_dv = 2 * (v + theta - 1)
+    dg_dtheta = 2 * (v + theta - 1)
+    return np.array([dg_dv, dg_dtheta])
+
+# Bilevel Optimization Made Easy (BOME)
+def bome(v_init, theta_init, alpha=0.01, xi=0.01, T=10, max_iter=100, eta=0.5):
+    v, theta = v_init, theta_init
+
+    for k in range(max_iter):
+        # Inner optimization: approximating θ*(v) via T gradient steps
+        for t in range(T):
+            theta -= alpha * grad_inner(v, theta)[1]  # Update θ using gradient of inner objective
+        
+        # Compute q(v, θ) and its gradient
+        q = inner_objective(v, theta_init) - inner_objective(v, theta)  # q(v, θ) = g(v, θ) - g*(v)
+        grad_q = grad_inner(v, theta)
+
+        # Compute control barrier φk
+        phi_k = eta * np.linalg.norm(grad_q)**2
+
+        # Compute the lambda_k (Lagrange multiplier)
+        grad_f = grad_outer(v, theta)
+        lambda_k = max((phi_k - np.dot(grad_f, grad_q)) / (np.linalg.norm(grad_q)**2), 0)
+
+        # Update v and θ using the BOME update rule
+        v -= xi * (grad_f[0] + lambda_k * grad_q[0])
+        theta -= xi * (grad_f[1] + lambda_k * grad_q[1])
+
+        # Print the current state
+        print(f"Iteration {k+1}: v = {v}, θ = {theta}, f(v, θ) = {outer_objective(v, theta)}")
+
+    return v, theta
+
+# Initialize variables
+v_init = 0.0
+theta_init = 0.0
+
+# Run the BOME algorithm
+v_opt, theta_opt = bome(v_init, theta_init)
+
+print(f"Optimal v: {v_opt}, Optimal θ: {theta_opt}")
